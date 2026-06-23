@@ -1,6 +1,7 @@
-// @ts-check
+// eslint.config.mjs
 import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import eslintConfigPrettier from 'eslint-config-prettier'; // 1. Importe aqui
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -11,17 +12,10 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended,
+  eslintConfigPrettier, // 2. Adicione por último aqui
   {
     languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-      sourceType: 'commonjs',
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
+      // ... restante das suas configurações
     },
   },
   {
@@ -32,4 +26,4 @@ export default tseslint.config(
       "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
-);
+  );

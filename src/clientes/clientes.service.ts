@@ -6,13 +6,12 @@ const prisma = new PrismaClient();
 
 @Injectable()
 export class ClientesService {
-  
   // Método para CADASTRAR um novo cliente
   async criar(dados: Prisma.ClienteCreateInput) {
     const novoCliente = await prisma.cliente.create({
       data: dados,
     });
-    
+
     return novoCliente;
   }
 
