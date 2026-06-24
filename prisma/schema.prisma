@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
+  provider = "postgresql"
 }
 
 model Cliente {
@@ -13,4 +13,6 @@ model Cliente {
   email     String?
   telefone  String?
   criadoEm  DateTime @default(now())
+
+  @@map("clientes")
 }

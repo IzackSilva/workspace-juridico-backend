@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ClientesService } from './clientes.service';
-import { Prisma } from '@prisma/client';
+import { Prisma as PrismaTypes } from '@prisma/client';
 
 @Controller('clientes')
 export class ClientesController {
@@ -9,7 +9,7 @@ export class ClientesController {
 
 // Rota para RECEBER os dados do Front-end e CADASTRAR
   @Post()
-  async criar(@Body() dados: Prisma.ClienteCreateInput) {
+  async criar(@Body() dados: PrismaTypes.ClienteCreateInput) {
     return this.clientesService.criar(dados);
   }
 
